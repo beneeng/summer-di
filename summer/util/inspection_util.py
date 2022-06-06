@@ -1,9 +1,9 @@
 
 
 from types import NoneType
-from typing import Any, Callable, Iterable, List, Set, Tuple, Type, TypeVar, Union, get_args, get_origin
+from typing import Any, Callable, List, Set, Tuple, Type, TypeVar, Union, get_args, get_origin
 import inspect
-from xmlrpc.client import boolean
+
 
 from numpy import isin
 
@@ -58,7 +58,7 @@ def get_castable_type(t: Type[T]) -> T:
         return origin
     return T
 
-def isinstance_safe(o: Any, t: Type) -> boolean:
+def isinstance_safe(o: Any, t: Type) -> bool:
     origin = get_origin(t)
     if origin is None:
         return isinstance(o, t)

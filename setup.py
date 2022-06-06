@@ -8,5 +8,5 @@ setup(
     description='Summer dependency injection and scheduling framework',
     author='Benedikt Engeser',
     license='MIT',
-    install_requires=[]
+    install_requires=['peewee>=3.14.8']
 )

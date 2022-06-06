@@ -1,7 +1,6 @@
 
 from abc import abstractmethod
 from typing import Any, Generic, Iterable, Optional, Tuple, TypeVar, List, Type, Callable
-from xmlrpc.client import boolean
 from summer.autowire.exceptions import ValidationError
 
 from summer.util import inspection_util

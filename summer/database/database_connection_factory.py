@@ -7,7 +7,7 @@ from summer.configuration.configuration_value import ConfigurationValue
 from summer.database.connection_templates import DatabaseConnectionTemplate, SQLiteConnectionTemplate, MysqlConnectionTemplate, PostgreSQLConnectionTemplate
 from summer.database.entities import DatabaseException
 from summer.summer_logging import get_summer_logger
-from bot.utils import config_keys
+from summer.configuration import config_keys
 
 
 class DatabaseConnectionFactory(BeanStereotype):

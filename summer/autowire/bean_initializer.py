@@ -1,8 +1,7 @@
 
-from abc import abstractmethod
-from multiprocessing.sharedctypes import Value
-from typing import Any, Generic, Iterable, Optional, Tuple, TypeVar, List, Type, Callable
-from xmlrpc.client import boolean
+
+from typing import Any, Generic, Optional, Tuple, TypeVar, List, Type
+
 from summer.autowire.bean_provider import BeanProvider
 from summer.autowire.exceptions import ValidationError
 from summer.summer_logging import get_summer_logger
@@ -61,5 +60,5 @@ class BeanInitializer(Generic[T]):
     def __repr__(self) -> str:
         len_requires = len(self._requires)
         len_still_requires = len(self._still_requires)
-        ready = "ready" if self.ready() else "not ready ({len_still_requires}/{len_requires})"
+        ready = "ready" if self.ready() else f"not ready ({len_still_requires}/{len_requires})"
         return f"BeanInitializer({self.bean_name} <{ready}>)"
