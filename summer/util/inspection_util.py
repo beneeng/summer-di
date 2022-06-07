@@ -4,9 +4,6 @@ from types import NoneType
 from typing import Any, Callable, List, Set, Tuple, Type, TypeVar, Union, get_args, get_origin
 import inspect
 
-
-from numpy import isin
-
 T = TypeVar('T')
 
 
