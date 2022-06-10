@@ -19,7 +19,8 @@ def open_with_backup(path, *args, **kwargs) -> ContextManager[FileIO]:
         with open(path, *args, **kwargs) as f:
             yield f
     except:
-        shutil.copy2(tmp_filepath, path)
+        if os.path.exists(tmp_filepath):
+            shutil.copy2(tmp_filepath, path)
         raise
     finally:
         if os.path.exists(tmp_filepath):
