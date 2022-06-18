@@ -4,9 +4,9 @@ import queue
 from typing import Any, Callable, Dict, List, Optional, Tuple, TypeVar, Union
 from uuid import uuid4
 
-from pydantic import ValidationError
 from summer.application.context_extension import ContextExtension, ContextExtensionRunThread
 from summer.autowire.context import SummerBeanContext
+from summer.autowire.exceptions import ValidationError
 from summer.scheduler.scheduled_task import ISchedulerPlaceholder, OneTimeScheduledTask, RepeatAfterTimeTask, ScheduledTask, StartRegularilyTask
 from summer.scheduler.scheduler_run_thread import SchedulerRunThread
 from summer.util import inspection_util, time_util
@@ -89,6 +89,8 @@ class SummerSchedulerContextExtension(ContextExtension, ISchedulerPlaceholder):
         if 'once_at_time' in kwargs:
             at = time_util.coerce_time(kwargs['once_at_time'])
             at = time_util.time_today(at)
+            if datetime.datetime.now() > at:
+                at = at +  datetime.timedelta(days=1)
         if 'once_at_datetime' in kwargs:
             at = time_util.coerce_datetime(kwargs['once_at_datetime'])
         autowired_callable = self._autowired_callable(function)
