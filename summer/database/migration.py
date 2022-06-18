@@ -12,5 +12,5 @@ class Migration:
         pass
 
     @abstractmethod
-    def migrate(self, db: Database, mogrator: SchemaMigrator):
+    def migrate(self, db: Database, migrator: SchemaMigrator):
         pass
